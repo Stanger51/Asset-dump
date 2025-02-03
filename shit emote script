@@ -1,4 +1,10 @@
---emote as killer FORSAKEN
+--emote as killer FORSAKEN and extra fun stuff
+function ChangeSprintStats(SSPEED)
+    local FindStats = game:GetService("ReplicatedStorage").Systems.Character.Game.Sprinting
+    local m = require(FindStats)
+  
+    m.SprintSpeed = SSPEED
+end
 
 function HumanoidChange(JPOWER)
 
@@ -25,7 +31,7 @@ local Window = Rayfield:CreateWindow({
     Name = "The edge streak",
     Icon = 13472993735, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
     LoadingTitle = "Loading astolfo feet pics...",
-    LoadingSubtitle = "by Sirius",
+    LoadingSubtitle = "by Stanger",
     Theme = "AmberGlow", -- Check https://docs.sirius.menu/rayfield/configuration/themes
  
     DisableRayfieldPrompts = false,
@@ -159,7 +165,7 @@ local Window = Rayfield:CreateWindow({
  })
 
  local Toggle = Tab:CreateToggle({
-    Name = "Aimbot",
+    Name = "Aimbot c00lkidd",
     CurrentValue = false,
     Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
     Callback = function(AIMBOTON)
@@ -240,5 +246,15 @@ game.Workspace.Gravity = GRAVFIND
     end,
  })
 
-
+ local Input = Tab:CreateInput({
+    Name = "Sprint speed",
+    PlaceholderText = "",
+    NumbersOnly = true, -- If the user can only type numbers. Remove or set to false if none.
+    CharacterLimit = 5, --max character limit. Remove or set to false
+    OnEnter = true, -- Will callback only if the user pressed ENTER while being focused on the the box.
+    RemoveTextAfterFocusLost = false, -- Speaks for itself.
+    Callback = function(InputSspeed)
+        ChangeSprintStats(InputSspeed,_,_)
+    end,
+ })
  
